@@ -22,7 +22,7 @@ public class Cavalo extends Peca{
 
             Peca queroIr = tabuleiro.obterPeca(linha,coluna);
 
-            if(queroIr!=null && queroIr.getCor()!=this.getCor()){
+            if (queroIr instanceof Vazia || (queroIr != null && queroIr.getCor() != this.getCor())) {
                 Posicao dest = new Posicao(linha,coluna);
                 Peca capturada = (queroIr instanceof Vazia) ? null : queroIr;
                 Move nova = new Move(atual,dest,this,capturada);
