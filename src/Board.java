@@ -28,8 +28,9 @@ public class Board {
     }
 
     public Peca obterPeca(int linha, int coluna){
-        //meter caso de Exception #IMPORTANTE
-        //casos de excepcao serao quando tentarmos aceder fora do tabuleiro e nesse caso retornaremos null
+        if(linha<0 || linha>7 || coluna>7 || coluna<0){
+            return null; // -> fora do tabuleiro
+        }
         return tabuleiro.get(linha).get(coluna);
     }
 

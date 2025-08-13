@@ -22,8 +22,8 @@ public class Peao extends Peca{
             int linhaDest2 = linhaOrig + (2*direcao);
             Posicao dest = new Posicao(linhaDest,atual.getColuna());
             Posicao dest2 = new Posicao(linhaDest2,atual.getColuna());
-            Move moveCasa = new Move(atual,dest, this,null);
-            Move move2Casa = new Move(atual,dest2,this,null);
+            Move moveCasa = new Move(atual,dest, this,tabuleiro.obterPeca(linhaDest,atual.getColuna()));
+            Move move2Casa = new Move(atual,dest2,this,tabuleiro.obterPeca(linhaDest2,atual.getColuna()));
             movimentos.add(moveCasa);
             movimentos.add(move2Casa);
         }
@@ -37,23 +37,22 @@ public class Peao extends Peca{
 
             if (frente instanceof Vazia){
                 Posicao dest = new Posicao(linhaOrig+direcao,colunaOrig);
-                Move moveCasa = new Move(atual,dest,this,null);
+                Move moveCasa = new Move(atual,dest,this,frente);
                 movimentos.add(moveCasa);
             }
 
-            if(direita instanceof Vazia){
+            if(direita!=null){
                 Posicao dest = new Posicao(linhaOrig+direcao,colunaOrig+1);
                 Move moveCasa = new Move(atual,dest,this,direita);
                 movimentos.add(moveCasa);
             }
 
-            if(esquerda instanceof Vazia){
+            if(esquerda!=null){
                 Posicao dest = new Posicao(linhaOrig+1,colunaOrig-1);
                 Move moveCasa = new Move(atual,dest,this,esquerda);
                 movimentos.add(moveCasa);
             }
         }
-
         return movimentos;
     }
 }
